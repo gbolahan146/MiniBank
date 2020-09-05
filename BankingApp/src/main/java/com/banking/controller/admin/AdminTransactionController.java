@@ -52,14 +52,14 @@ public class AdminTransactionController {
 	{
 
 		
-		// check amount is > 0 first
+
 		Boolean amountIsNegativeOrZeroValue = transactionService.amountIsNegativeOrZeroValue(Float.parseFloat(amount));
 		if (amountIsNegativeOrZeroValue == true) {
 			return "redirect:/admin/customer/fund_transfer?error=Invalid amount";
 		}
 		
 
-		// ensure sender_balance - amount >= 0
+
 		Boolean hasSufficientBalance = customerService.isSufficientBlance(sender, Float.parseFloat(amount));
 		if (hasSufficientBalance == false) {
 			return "redirect:/admin/customer/fund_transfer?error=Insufficient balance";
