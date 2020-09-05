@@ -1,4 +1,4 @@
-# MiniBanking]]
+# MiniBanking
 Mini Core banking application
 
 # Download Zip/Clone Folder.
