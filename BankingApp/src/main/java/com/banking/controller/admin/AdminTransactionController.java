@@ -42,8 +42,7 @@ public class AdminTransactionController {
 	
 
 	
-//	@PostMapping("/admin/customer/fund_transfer")
-//	@ResponseBody
+
 	@RequestMapping(value="/admin/customer/fund_transfer", method=RequestMethod.POST)
 	public String makeTransfer(
 			@RequestParam("sender") String sender,
@@ -66,7 +65,7 @@ public class AdminTransactionController {
 			return "redirect:/admin/customer/fund_transfer?error=Insufficient balance";
 		}
 		
-		// if we have come this far, subtract amount from senders balance and add to recipient
+		
 		
 		
 		customerService.deductAmountFromSender(sender, Float.parseFloat(amount));		
@@ -75,7 +74,7 @@ public class AdminTransactionController {
 		transaction.setPaymentMethod("transfer");
 		transactionService.save(transaction);
 		
-//		System.out.println("-----================------");
+
 		
 		return "redirect:/admin/customer/fund_transfer?success";
 
