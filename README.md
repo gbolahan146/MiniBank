@@ -24,10 +24,12 @@ Mini Core banking application
 
 # Rigth click on it , select "Run As"  and then Click SpringBoot Application.
 
-# Within some few seconds MiniCoreBankingApplication will start running. 
+# Within some few seconds BankingApp will start running. 
 
 #For installation of database I exported and attached the sql file to the root folder
+#download and install mysql workbench 
 
-#download and install mysql workbench
-#make sure user is "root"
+#make sure user is "root" and password is "gboly123" 
+#if hibernate gives issue the password can be removed in applications.properties
+
 # import into mysql --- name of the database "bankdb"
