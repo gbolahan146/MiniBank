@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Homepage</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+<style>
+body {
+
+    background-image: url("https://images.pexels.com/photos/268415/pexels-photo-268415.jpeg?cs=srgb&dl=pexels-pixabay-268415.jpg&fm=jpg");
+}</style>
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid bg-warning">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Gbanking</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="/logout">Logout</a></li>
+	      <li> <a  th:href="@{/admin/customer/fund_transfer}"> Make Transfer</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<div class="col-md-12 text-center">
+ 		<h3> <span sec:authentication="principal.username"></span> personal bank</h3>
+ 		<br><h4> Start banking great</h4>
+ 		
+ 		<div class="clearfix"></div>
+      	<p class="bg-success"><a href="/admin/customer/index">Available accounts </a></p>
+      	<p class="bg-success"><a href="/admin/customer/add">Open new Account</a></p>
+      	
+      	
+      	
+      	<div class="col-md-6 text-center">
+      	
+      		<h4>Have to withdraw or send money?</h4>
+      		<hr>
+      		<div th:if="${param.no_data_found}">
+				<div class="alert alert-danger">Doesn't exist try again or open new</div>
+			</div>
+	      	<form th:action="@{/admin/customer}" method="get">
+	      	
+	      		<div class="form-group">
+				    <input type="text" class="form-control" name="accountNumber" placeholder="Enter account number" required />
+				</div>
+	      		
+	      		<button type="submit" class="btn btn-success btn-block registerbtn">Search Account</button>
+	      		
+	      	</form>
+      	</div>
+      	
+	</div>
+
+</body>
+</html>

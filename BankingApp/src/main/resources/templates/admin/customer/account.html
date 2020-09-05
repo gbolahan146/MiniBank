@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Admin page for account</title>
+
+<link href="./../../css/font-awesome.css" rel="stylesheet"> 
+<link rel="stylesheet" href="./../../css/style2.css" type="text/css" media="all" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+<style>
+body {
+
+    background-image: url("https://images.pexels.com/photos/268415/pexels-photo-268415.jpeg?cs=srgb&dl=pexels-pixabay-268415.jpg&fm=jpg");
+}</style>
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid bg-warning">
+	    <div class="navbar-header ">
+	      <a class="navbar-brand" th:href="@{/home}">Gbanking</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="/admin/home">Menu</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<div class="col-md-12">
+ 		<h3 style="text-align: center;">Customers</h3>
+
+	    <div class="col-md-10 col-md-offset-1">
+	    
+	      <table class="table table-hover bg-success">
+	      
+	      <tr>
+	                <th>Account Number</th>
+	                 <td th:text="${customer.accountNumber}"></td>
+	            </tr>
+
+		     	<tr>
+	                <th>Firstname</th>
+	                 <td th:text="${customer.firstName}"></td>
+	            </tr>
+	            
+	            <tr>
+	                <th>Lastname</th>
+	                 <td th:text="${customer.lastName}"></td>
+	                
+	            </tr>
+	            
+	            <tr>
+	                <th>Email</th>
+	                 <td th:text="${customer.email}"></td>
+	            </tr>
+	            
+	            
+	            
+	            <tr>
+	                <th>Account Balance</th>
+	                 <td th:text="${customer.accountBalance}"></td>
+	                
+	            </tr>
+	            
+	            <tr>
+	                <th> Active</th>
+	                 <td th:text="${customer.accountStatus}"></td>
+	                
+	            </tr>
+	            
+		  </table>
+		  
+		  
+	       <br/><br/><br/>
+	       <h4>What do you want to do</h4>
+	       <hr>
+	       <div class="col-md-12">
+			   <a class="btn btn-success" disabled href="#">Deposit <i class="fa fa-money" aria-hidden="true"></i></a>
+			   <a class="btn btn-info" disabled href="#">Withdrawal <i class="fa fa-credit-card" aria-hidden="true"></i></a>
+			   <a class="btn btn-primary" th:href="@{/admin/customer/fund_transfer?sender={id}(id=${customer.accountNumber} )}">Transfer</a>
+	    	   <br>
+	    	   <br>
+	    	   <br>
+	    	   <br>
+	    	   <form th:action="@{/admin/customer/close_account}" method="post">
+	    	   		<input type="hidden" name="accountNumber" th:value="${customer.accountNumber}">
+	    	   		<button class="btn btn-danger">Deactivate Account   <i class="fa fa-close" aria-hidden="true"> </i></button>
+	    	   </form>
+    	   </div>
+    	
+		</div>
+	</div>
+
+</body>
+</html>

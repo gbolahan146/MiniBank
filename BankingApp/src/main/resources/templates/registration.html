@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Reg</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+
+<style>
+body {
+
+    background-image: url("https://images.pexels.com/photos/268415/pexels-photo-268415.jpeg?cs=srgb&dl=pexels-pixabay-268415.jpg&fm=jpg");
+}</style>
+
+</head>
+<body>
+	
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid bg-warning">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">Gbanking</a>
+	    </div>
+	    <ul class="nav navbar-nav">
+	      <li><a href="/login">Sign in</a></li>
+	      <li><a href="/registration">Sign up</a></li>
+	    </ul>
+	  </div>
+	</nav>
+	
+	<div class="col-md-6 col-md-offset-3 col-sm-6 col-sm-offset-3">
+	
+		<div th:if="${param.success}">
+			<div class="alert alert-info">Registration successful</div>
+		</div>
+		
+		 <form th:action="@{/registration}" method="post" th:object="${user}">
+
+		    <h1>Register</h1>
+		    <p>Create an account here.</p>
+		    <hr>
+		    
+		    <div class="form-group">
+			    <label for="email"><b>Email</b></label>
+			    <input type="text" class="form-control" th:field="*{email}" id="email" required>
+			</div>
+			
+			<div class="form-group">
+				<label for="firstname"><b>Firstname</b></label>
+			    <input type="text" class="form-control" th:field="*{firstName}" id="firstname" required>
+			</div>
+	 	
+	 		<div class="form-group">
+				<label for="lastname"><b>Lastname</b></label>
+			    <input type="text" class="form-control" th:field="*{lastName}" id="lastname" required>
+			</div>
+			
+			<div class="form-group">
+				<label for="phoneNumber"><b>PhoneNumber</b></label>
+			    <input type="text" class="form-control" th:field="*{phoneNumber}" id="phoneNumber" required>
+			</div>
+		
+			
+			
+			<div class="form-group">
+			    <label for="psw"><b>Password</b></label>
+			    <input type="password" class="form-control" th:field="*{password}" id="psw" required>
+	 		</div>
+		
+		    
+		    <button type="submit" class="btn btn-success btn-block registerbtn">Register</button>
+
+			
+			<br>
+	      	<p style="text-align: center;">Already have account? <a th:href="@{/login}">Sign in</a></p>
+
+		</form> 
+	</div>
+
+</body>
+</html>
