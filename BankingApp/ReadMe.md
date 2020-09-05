@@ -1,4 +1,6 @@
 ##Hosted on https://minigbank.herokuapp.com
+
+###  Advisable to test locally before on deployed link
 # MiniBanking
 Mini Core banking application
 
